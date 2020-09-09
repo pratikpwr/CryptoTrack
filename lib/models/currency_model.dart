@@ -36,7 +36,6 @@ class Currencies with ChangeNotifier {
       var response = await http.get(url);
 
       var data = json.decode(response.body)[0];
-      print(response.body);
 
       CryptoInfoModel cryptoInfoModel = CryptoInfoModel.fromMap(data);
 

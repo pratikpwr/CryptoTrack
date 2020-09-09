@@ -34,36 +34,70 @@ class AddCurrencyScreen extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 18,
+            ),
             TextField(
               controller: _cryptoController,
-              decoration: InputDecoration(
-                hintText: 'Enter crypto currency',
-                focusColor: Colors.white,
-                fillColor: Colors.white,
-              ),
               onChanged: (text) {
                 crypto = _cryptoController.text;
               },
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Crypto Currency eg. bitcoin',
+                labelStyle: GoogleFonts.poppins(color: Colors.white),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              style: GoogleFonts.poppins(color: Colors.white),
+            ),
+            SizedBox(
+              height: 18,
             ),
             TextField(
               controller: _fiatController,
+              style: GoogleFonts.poppins(color: Colors.white),
               decoration: InputDecoration(
-                hintText: 'Enter fiat currency',
+                border: OutlineInputBorder(),
+                labelText: 'Fiat Currency eg. usd',
+                labelStyle: GoogleFonts.poppins(color: Colors.white),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).accentColor,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
               onChanged: (text) {
                 fiat = _fiatController.text;
               },
             ),
+            SizedBox(
+              height: 18,
+            ),
             RaisedButton(
               onPressed: () {
                 Provider.of<Currencies>(context, listen: false)
                     .addNewCurrency(crypto, fiat);
-                /* Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return HomeScreen();
-                }));*/
                 Navigator.of(context).pop();
               },
-              child: Text('Done'),
+              padding: EdgeInsets.symmetric(horizontal: 52, vertical: 12),
+              color: Theme.of(context).accentColor,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                'Done',
+                style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
             )
           ],
         ),
