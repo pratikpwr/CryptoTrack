@@ -5,11 +5,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Currency {
+  String id;
   String crypto;
   String fiat;
   CryptoInfoModel cryptoInfo;
 
-  Currency({this.crypto, this.fiat, this.cryptoInfo});
+  Currency({this.id,this.crypto, this.fiat, this.cryptoInfo});
 }
 
 class Currencies with ChangeNotifier {
@@ -23,7 +24,7 @@ class Currencies with ChangeNotifier {
     CryptoInfoModel _cryptoInfo = await fetchData(crypto, fiat);
 
     final newCurrency =
-        Currency(crypto: crypto, fiat: fiat, cryptoInfo: _cryptoInfo);
+        Currency( id : DateTime.now().toIso8601String(),crypto: crypto, fiat: fiat, cryptoInfo: _cryptoInfo);
     _currencies.add(newCurrency);
     notifyListeners();
   }
